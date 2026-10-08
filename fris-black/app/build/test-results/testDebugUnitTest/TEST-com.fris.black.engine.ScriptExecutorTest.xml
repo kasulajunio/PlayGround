@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fris.black.engine.ScriptExecutorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-08T14:16:40.880Z" hostname="runnervmmprz5" time="0.161">
+  <properties/>
+  <testcase name="paraNoPrimeiroErro" classname="com.fris.black.engine.ScriptExecutorTest" time="0.146"/>
+  <testcase name="runIdUnico" classname="com.fris.black.engine.ScriptExecutorTest" time="0.008"/>
+  <testcase name="rodaSequenciaAteFim" classname="com.fris.black.engine.ScriptExecutorTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

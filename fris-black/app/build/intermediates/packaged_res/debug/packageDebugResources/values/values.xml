@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fris Black</string>
+    <style name="Theme.FrisBlack" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryVariant">#111111</item>
+        <item name="colorOnPrimary">#FFD700</item>
+        <item name="colorSecondary">#FFD700</item>
+        <item name="android:windowBackground">#0B0B0C</item>
+    </style>
+</resources>

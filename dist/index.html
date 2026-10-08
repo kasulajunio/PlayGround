@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fris Black — automação atômica para Android</title>
+<meta name="description" content="Fris Black v2: escolher app, escrever script, validar, ativar. Roda sozinho, passo a passo, sem travar.">
+<style>
+  :root { color-scheme: dark; --gold: #ffd700; --bg: #0b0b0c; --card: #151517; --txt: #f2f2f2; --mut: #a8a8a8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--txt); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 56px 24px 24px; text-align: center; }
+  .badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); border-radius: 999px; padding: 4px 14px; font-size: 13px; letter-spacing: 1px; }
+  h1 { font-size: clamp(32px, 6vw, 56px); margin: 16px 0 8px; }
+  h1 span { color: var(--gold); }
+  p.lead { color: var(--mut); max-width: 640px; margin: 0 auto; font-size: 17px; }
+  .cta { margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { background: var(--gold); color: #111; font-weight: 700; border: 0; border-radius: 10px; padding: 14px 22px; font-size: 16px; cursor: pointer; text-decoration: none; }
+  .btn.ghost { background: transparent; color: var(--txt); border: 1px solid #333; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 24px; }
+  .card { background: var(--card); border: 1px solid #26262a; border-radius: 12px; padding: 18px; }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { margin: 0; color: var(--mut); font-size: 14px; }
+  pre { background: #000; border: 1px solid #26262a; border-radius: 12px; padding: 18px; overflow-x: auto; font-size: 13.5px; line-height: 1.6; }
+  h2 { margin-top: 40px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { border: 1px solid #26262a; padding: 10px; text-align: left; }
+  th { background: #151517; }
+  footer { text-align: center; color: var(--mut); padding: 40px 24px; font-size: 13px; }
+  code { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <span class="badge">FRIS BLACK v2 • SEM ROOT</span>
+  <h1>Escolher app → script → <span>roda sozinho.</span></h1>
+  <p class="lead">Validado linha por linha, executado passo a passo. Se um passo falhar, para e registra o erro — nunca faz tudo de qualquer jeito.</p>
+  <div class="cta">
+    <a class="btn" href="#baixar">⬇ Baixar o APK</a>
+    <a class="btn ghost" href="#script">Ver exemplo de script</a>
+  </div>
+</header>
+<main>
+  <div class="grid">
+    <div class="card"><h3>✔ Validação antes de ativar</h3><p>Erro com número da linha. Ex: <code>linha 7: botão "Pesqsaar" não encontrado</code>.</p></div>
+    <div class="card"><h3>⚛ Executor atômico</h3><p>Máx 30 passos, timeout por passo, 60s por rodada, sem loop infinito.</p></div>
+    <div class="card"><h3>♿ Nível 2 — Acessibilidade</h3><p>Clicar, digitar, rolar e ler botões em qualquer app, com confirmação.</p></div>
+    <div class="card"><h3>🫧 Bolinha flutuante</h3><p>Pausar, continuar, ver histórico e desativar sem sair do app.</p></div>
+  </div>
+
+  <h2 id="script">Exemplo — Modo Noite</h2>
+  <pre>ALVO YouTube
+
+QUANDO chegar às 23:00
+SE for depois das 22:00
+ENTÃO abrir YouTube
+ENTÃO esperar até aparecer "Pesquisar" em 10s
+ENTÃO clicar em "Pesquisar"
+ENTÃO digitar "música para dormir"
+ENTÃO clicar em "Pesquisar"
+ENTÃO esperar 3 segundos
+ENTÃO rolar para baixo
+ENTÃO mostrar aviso "Modo noite ativado"
+ENTÃO registrar "modo noite ok"</pre>
+
+  <h2>Níveis de poder</h2>
+  <table>
+    <tr><th>Nível</th><th>Permissão</th><th>Faz</th></tr>
+    <tr><td>1 — Base</td><td>nenhuma</td><td>abrir app, aviso, cronômetro, agendar, bolha</td></tr>
+    <tr><td>2 — Acessibilidade</td><td>usuário liga em Ajustes</td><td>clicar, digitar, rolar, ler botões</td></tr>
+    <tr><td>3 — Shizuku</td><td>Shizuku + ADB</td><td>comandos profundos do sistema</td></tr>
+    <tr><td>4 — Root</td><td>root</td><td>literalmente tudo (pode quebrar o celular)</td></tr>
+  </table>
+  <p style="color:var(--mut)">Sem root, o Android bloqueia apps de banco e telas de sistema de propósito — isso é segurança, não bug.</p>
+
+  <h2 id="baixar">Baixar o APK</h2>
+  <div class="card">
+    <h3>📦 fris-black-debug.apk v2.0.0</h3>
+    <p>GitHub Actions → workflow <code>Fris Black APK</code> → Artifacts → <code>fris-black-debug-apk</code>. Min Android 8 (SDK 26). Ative a Acessibilidade após instalar.</p>
+  </div>
+</main>
+<footer>Fris Black v2 • parser + executor com 11 testes unitários • feito com AccessibilityService + AlarmManager + overlay</footer>
+</body>
+</html>
